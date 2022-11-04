@@ -5,4 +5,4 @@ class bridge {
         String bridge_name;
         var bridge_type;
         number bridge_size; 
-      } 
+      }  
