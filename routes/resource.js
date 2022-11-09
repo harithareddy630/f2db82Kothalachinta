@@ -13,18 +13,18 @@ router.get('/', api_controller.api);
 /// COSTUME ROUTES /// 
  
 // POST request for creating a bridge.  
-router.post('/bridgess', bridge_controller.bridge_create_post); 
+router.post('/bridges', bridge_controller.bridge_create_post); 
  
 // DELETE request to delete bridge. 
-router.delete('/bridgess/:id', bridge_controller.bridge_delete); 
+router.delete('/bridges/:id', bridge_controller.bridge_delete); 
  
 // PUT request to update bridge. 
-router.put('/bridgess/:id', bridge_controller.bridge_update_put); 
+router.put('/bridges/:id', bridge_controller.bridge_update_put); 
  
 // GET request for one bridge. 
-router.get('/bridgess/:id', bridge_controller.bridge_detail); 
+router.get('/bridges/:id', bridge_controller.bridge_detail); 
  
 // GET request for list of all bridge items. 
-router.get('/bridgess', bridge_controller.bridge_list); 
+router.get('/bridges', bridge_controller.bridge_list);  
  
 module.exports = router;    

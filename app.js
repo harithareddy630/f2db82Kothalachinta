@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bridge', bridgeRouter); 
+app.use('/bridges', bridgeRouter);  
 app.use('/gridbuild', gridbuildRouter); 
 app.use('/selector', selectorRouter);  
 app.use('/resource', resourceRouter); 

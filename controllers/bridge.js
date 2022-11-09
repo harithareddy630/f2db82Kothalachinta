@@ -15,7 +15,7 @@ exports.bridge_list = async function(req, res) {
         res.status(500); 
         res.send(`{"error": ${err}}`); 
     }   
-}; 
+};  
 
 
  
@@ -25,7 +25,7 @@ exports.bridge_detail = function(req, res) {
 }; 
  
 // List of all bridgess 
-exports.bridge_list = async function(req, res) { 
+exports.bridge_detail = async function(req, res) { 
     try{ 
         thebridgess = await bridge.find(); 
         res.send(thebridgess); 
@@ -43,7 +43,7 @@ exports.bridge_create_post = function(req, res) {
 }; 
 
 // List of all bridgess 
-exports.bridge_list = async function(req, res) { 
+exports.bridge_create_post = async function(req, res) { 
     try{ 
         thebridgess = await bridge.find(); 
         res.send(thebridgess); 
@@ -61,7 +61,7 @@ exports.bridge_delete = function(req, res) {
 }; 
 
 // List of all bridgess 
-exports.bridge_list = async function(req, res) { 
+exports.bridge_delete = async function(req, res) { 
     try{ 
         thebridgess = await bridge.find(); 
         res.send(thebridgess); 
@@ -80,7 +80,7 @@ exports.bridge_update_put = function(req, res) {
 };  
 
 // List of all bridgess 
-exports.bridge_list = async function(req, res) { 
+exports.bridge_update_put = async function(req, res) { 
     try{ 
         thebridgess = await bridge.find(); 
         res.send(thebridgess); 
@@ -91,3 +91,16 @@ exports.bridge_list = async function(req, res) {
     }   
 }; 
 
+// VIEWS 
+// Handle a show all view 
+exports.bridge_view_all_Page = async function(req, res) { 
+    try{ 
+        thebridges = await bridge.find(); 
+        res.render('bridges', { title: 'bridge Search Results', results: thebridges }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }    
+};   
+ 

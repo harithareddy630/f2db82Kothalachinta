@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  - let items = results 
   - var result = [{"bridge_name":"Hawra","bridge_size":150,"bridge_type":"wooden"},{"bridge_name":"Motilal","bridge_size":200,"bridge_type":"beam"},{"bridge_name":"Stone","bridge_size":250,"bridge_type":"arch"}]
   div.container-fluid
      div.row
@@ -11,4 +12,4 @@ block content
   script.
       function buy(index){
          alert("you purchased item "+(index+1)) 
-      }
+      }  
