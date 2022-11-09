@@ -1,15 +1,15 @@
 var bridge = require('../models/bridge'); 
  
-// List of all bridgess 
+// List of all bridges 
 exports.bridge_list = function(req, res) { 
     res.send('NOT IMPLEMENTED: bridge list'); 
 }; 
 
-// List of all bridgess 
+// List of all bridges 
 exports.bridge_list = async function(req, res) { 
     try{ 
-        thebridgess = await bridge.find(); 
-        res.send(thebridgess); 
+        thebridges = await bridge.find(); 
+        res.send(thebridges); 
     } 
     catch(err){ 
         res.status(500); 
@@ -24,11 +24,11 @@ exports.bridge_detail = function(req, res) {
     res.send('NOT IMPLEMENTED: bridge detail: ' + req.params.id); 
 }; 
  
-// List of all bridgess 
+// List of all bridges 
 exports.bridge_detail = async function(req, res) { 
     try{ 
-        thebridgess = await bridge.find(); 
-        res.send(thebridgess); 
+        thebridges = await bridge.find(); 
+        res.send(thebridges); 
     } 
     catch(err){ 
         res.status(500); 
@@ -42,11 +42,11 @@ exports.bridge_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: bridge create POST'); 
 }; 
 
-// List of all bridgess 
+// List of all bridges
 exports.bridge_create_post = async function(req, res) { 
     try{ 
-        thebridgess = await bridge.find(); 
-        res.send(thebridgess); 
+        thebridges = await bridge.find(); 
+        res.send(thebridges); 
     } 
     catch(err){ 
         res.status(500); 
@@ -60,12 +60,12 @@ exports.bridge_delete = function(req, res) {
     res.send('NOT IMPLEMENTED: bridge delete DELETE ' + req.params.id);  
 }; 
 
-// List of all bridgess 
+// List of all bridges 
 exports.bridge_delete = async function(req, res) { 
     try{ 
-        thebridgess = await bridge.find(); 
-        res.send(thebridgess); 
-    } 
+        thebridges = await bridge.find(); 
+        res.send(thebridges); 
+    }
     catch(err){ 
         res.status(500); 
         res.send(`{"error": ${err}}`); 
@@ -79,11 +79,11 @@ exports.bridge_update_put = function(req, res) {
     res.send('NOT IMPLEMENTED: bridge update PUT' + req.params.id);    
 };  
 
-// List of all bridgess 
+// List of all bridges 
 exports.bridge_update_put = async function(req, res) { 
     try{ 
-        thebridgess = await bridge.find(); 
-        res.send(thebridgess); 
+        thebridges = await bridge.find(); 
+        res.send(thebridges); 
     } 
     catch(err){ 
         res.status(500); 
@@ -111,19 +111,19 @@ exports.bridge_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
-    // {"bridge_type":"goat", "cost":12, "size":"large"} 
+    // {"bridge_name":"lalsingh", "bridge_size":100, "bridge_type":"rotational"}  
     document.bridge_name = req.body.bridge_name; 
     document.bridge_size = req.body.bridge_size; 
-    document.bridge_type = req.body.bridge_type;  
+    document.bridge_type = req.body.bridge_type;   
     try{ 
         let result = await document.save(); 
         res.send(result); 
     } 
-    catch(err){ 
+    catch(err){  
         res.status(500); 
         res.send(`{"error": ${err}}`);  
     }   
 }; 
  
 
- 
+  

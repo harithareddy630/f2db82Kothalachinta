@@ -8,7 +8,7 @@ block content
   div.container-fluid
      div.row
         each item,index in result
-            div.col-sm-2(onclick=`buy(${index})`) Bridge Name: #{item["bridge_name"]}  <br>  Bridge_size: #{item["bridge_size"]} <br> Bridge_type: #{item["bridge_type"]}  
+            div.row(onclick=`buy(${index})`) Bridge Name: #{item["bridge_name"]} &nbsp   Bridge_size: #{item["bridge_size"]} &nbsp  Bridge_type: #{item["bridge_type"]}  
   script.
       function buy(index){
          alert("you purchased item "+(index+1)) 
