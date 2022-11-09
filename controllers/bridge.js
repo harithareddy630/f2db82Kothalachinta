@@ -103,4 +103,27 @@ exports.bridge_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }    
 };   
+
+// Handle bridge create on POST. 
+exports.bridge_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new bridge(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"bridge_type":"goat", "cost":12, "size":"large"} 
+    document.bridge_name = req.body.bridge_name; 
+    document.bridge_size = req.body.bridge_size; 
+    document.bridge_type = req.body.bridge_type;  
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`);  
+    }   
+}; 
+ 
+
  
