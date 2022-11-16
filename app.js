@@ -9,8 +9,7 @@ const connectionString =
 process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
-{useNewUrlParser: true,
-useUnifiedTopology: true}); 
+{useNewUrlParser: true,useUnifiedTopology: true}); 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -71,11 +70,6 @@ bridge_name:"arch"});
 let reseed = true;  
 if (reseed) { recreateDB();} 
 
-
-
-
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -92,4 +86,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app; 

@@ -7,3 +7,15 @@ a {
   color: #00B7FF;
 }
    
+.bridgeAttr {
+  background-color: rgb(22, 139, 222);
+  width: 120px; 
+ } 
+
+ .d {
+  padding: 10px;
+  background-color: rgb(237, 56, 56);
+ }
+ .e {
+ background-color: rgba(17, 40, 31, 0.863);
+ }

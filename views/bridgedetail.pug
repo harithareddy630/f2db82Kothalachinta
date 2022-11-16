@@ -1,0 +1,24 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to display 
+  else
+   - let bridgeid = toShow._id 
+   - let bridge_type = toShow.bridge_type 
+   - let bridge_name = toShow.bridge_name
+   - let bridge_size = toShow.bridge_size
+   div 
+     div.row 
+       div(class='bridgeAttr mr-3') bridge ID is: 
+       div #{bridgeid} 
+     div.row 
+       div(class='bridgeAttr mr-3') bridge_type is: 
+       div #{bridge_type} 
+     div.row 
+       div(class='bridgeAttr mr-3') bridge_name is: 
+       div #{bridge_name} 
+     div.row 
+       div(class='bridgeAttr mr-3') bridge_size is: 
+       div #{bridge_size} 

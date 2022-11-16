@@ -8,3 +8,4 @@ const bridgeSchema = mongoose.Schema({
 module.exports = mongoose.model("bridge", 
 bridgeSchema)  
 
+ 

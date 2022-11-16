@@ -1,0 +1,36 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  
+  form(id='bridgeForm', action="/resource/bridges", method="POST" ) 
+    div(class='d').form-group 
+    div(class='d e').form-group  
+        label.bridgeAttr(for='bridge_type') bridge_type
+        input#bridge_type(type='text', name='bridge_type') 
+    div(class='d e').form-group 
+        label.bridgeAttr(for='bridge_name') bridge_name 
+        input#bridge_name(type='text', name='bridge_name') 
+    div(class='d e').form-group 
+        label.bridgeAttr(for='bridge_size') bridge_size 
+        input#bridge_size(type='number', name='bridge_size')
+    input(style="background-color: #4CAF50;" type="submit")  
+    
+ 
+  script. 
+    document.forms['bridgeForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    });      
