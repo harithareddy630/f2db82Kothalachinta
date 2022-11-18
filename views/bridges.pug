@@ -7,18 +7,19 @@ block content
         div(class='container' style="text-align: center;")  
             div.row 
                 each item, index in results
-                    div(class='col-md')
+                    div(class='row-md-2')
                         div(class='card', style='width: 17rem;')
                             div(class='card-body')
                                 - let destination = `dispatch(\"/bridge/update?id=${item._id}\")`
                                 div(class='card-text', onclick=`buy(${index})`) bridge_type: #{item["bridge_type"]}  <br> bridge_name: #{item["bridge_name"]} <br> bridge_size: #{item["bridge_size"]}
-                                 button.btn(class="btn btn-info btn-sm ml-2", style="margin: 10px; width: 150px;", onclick= destination) Update  
+                                 button.btn(class="btn btn-secondary btn-sm ml-2", style="margin: 10px; width: 150px;", onclick= destination) Update  
   script.
     function buy(index){
         alert("you purchased item "+(index+1)) 
         }
     function dispatch(path) {
-            window.location.href = path; 
+            window.location.href = path;  
       }
       
   
+    
