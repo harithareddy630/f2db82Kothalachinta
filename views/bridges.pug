@@ -1,25 +1,63 @@
-extends layout
-
-block content
-  div(class='container')
-        h1(style="text-align: center; color: #863A6F")= title
-        - var results = results
-        div(class='container' style="text-align: center;")  
-            div.row 
-                each item, index in results
-                    div(class='row-md-2')
-                        div(class='card', style='width: 17rem;')
-                            div(class='card-body')
-                                - let destination = `dispatch(\"/bridge/update?id=${item._id}\")`
-                                div(class='card-text', onclick=`buy(${index})`) bridge_type: #{item["bridge_type"]}  <br> bridge_name: #{item["bridge_name"]} <br> bridge_size: #{item["bridge_size"]}
-                                 button.btn(class="btn btn-secondary btn-sm ml-2", style="margin: 10px; width: 150px;", onclick= destination) Update  
+extends layout 
+block content 
+  h1=title 
+  -let items = results 
+  button.btn( class="btn-dark ml-1",id="create" onclick= `dispatch(\"/bridges/create")` ) Create
+  div(class="container-fluid")
+  div(class="row m-1")
+    each item in items
+      - let destination = `dispatch(\"/bridges/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item #{item.bridge_name}(#{item.bridge_type}) is #{item.bridge_size}
+        button.btn( class="btn-warning ml-1", onclick= destination) Update
+ 
   script.
-    function buy(index){
-        alert("you purchased item "+(index+1)) 
-        }
-    function dispatch(path) {
-            window.location.href = path;  
+    function dispatch(path)
+      {
+        window.location.href=path
       }
-      
-  
-    
+  button.btn( class="btn-dark ml-1", onclick= `click(\"/bridge/create\")` ) Create a new Item
+  table(class="table table-stripped table-bordered")
+        thead(style="background-color:pink;color:blue")  
+           tr
+               td Item ID
+               td Item bridge_name
+               td Item bridge_type
+               td Item bridge_size
+               td Update
+               td Details
+               td Delete
+           tbody
+            
+           each item in items
+                tr
+                    td #{item._id}
+                    td #{item.bridge_name}
+                    td #{item.bridge_type}
+                    td #{item.bridge_size}
+                    td 
+                      button.btn( class="btn-success ml-1", onclick= `dispatch(\"/bridges/update?id=${item._id}\")` ) Update
+                    td 
+                      button.btn( class="btn-success ml-1", onclick= `dispatch(\"/bridges/detail?id=${item._id}\")` ) Details
+                    td 
+                      button.btn( class="btn-success ml-1", onclick= `dispatch(\"/bridges/delete?id=${item._id}\")` ) Delete  
+                script. 
+                  function click(path){ 
+                    window.location.href=path 
+                  } 
+
+  - let num=[{bridge_name:"golden gate",bridge_type:"cable",bridge_size:100},{bridge_name:"brooklyn",bridge_type:"suspension",bridge_size:150},{bridge_name:"tower",bridge_type:"beam",bridge_size:300}]
+  div(class="container-fluid") 
+  div(class="row")
+    each bridge,index in num 
+      table(style='width:100%')
+          tr 
+              div(class="col-sm-2" onclick=`buy(${index})`) #{bridge.bridge_name}
+              div(class="col-sm-2" onclick=`buy(${index})`) #{bridge.bridge_type}
+              div(class="col-sm-2" onclick=`buy(${index})`) #{bridge.bridge_size}
+
+    script.
+
+      function buy(itemNo) 
+      {
+        alert(`Your destination ${itemNo+1}`) 
+      }
